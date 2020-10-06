@@ -1,81 +1,93 @@
 "use strict";
 
-// const numberOfFilms = prompt('how many films you have watched', '');
+'use strict';
 
-// const personalMoviesDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
+document.addEventListener('DOMContentLoaded', () => {
 
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
+    const adv = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
+        addForm = document.querySelector('form.add'),
+        addInput = addForm.querySelector('.adding__input'),
+        checkbox = addForm.querySelector('[type="checkbox"]');
 
-// for (let i = 0; i < 2; i++) {
-//     const a = prompt('The last movie you watched', ''),
-//         b = prompt('How much do you like it?', '');
+    addForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-//     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//         console.log('done')
-//         personalMoviesDB.movies[a] = b;
-//     } else {
-//         i--
-//         console.log('error')
-//     }
-//     if (personalMoviesDB.count < 10) {
-//         console.log('<10')
-//     }
-// }
+        let newFilm = addInput.value;
+        const favorite = checkbox.checked;
 
-// console.log(personalMoviesDB);
+        if (newFilm) {
 
-// function ret (){
-//     let num = 50;
-//     return num
-// }
-// console.log(ret())
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }
 
+            if (favorite) {
+                console.log("Добавляем любимый фильм");
+            }
 
-// const options = {
-//     name: 'object',
-//     width: 1024,
-//     height: 1024,
-//     color: {
-//         border: 'black',
-//         bg: 'red'
-//     }
-// };
-// //console.log(`${options[name]}`);
-// for( let key in options){
-//     console.log(`Option ${key} have value: ${options[key]} `);
-// }
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
+    
+            createMovieList(movieDB.movies, movieList);
+        }
 
+        event.target.reset();
 
-// const obj = {
-//     a: 1,
-//     b: 2,
-//     c: 3,
-//     d: {
-//         k: 7,
-//         n: 8
-//     },
-//     f: function(){
-//         console.log('done');
-//     }
-// };
+    });
 
-// const newObj = {...obj,...JSON.parse(JSON.stringify(obj))};
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };
 
-// newObj.b.k = 5;
-// newObj.a = 9;
-// console.log(obj);
-// console.log(newObj);
+    const makeChanges = () => {
+        genre.textContent = 'драма';
 
+        poster.style.backgroundImage = 'url("img/bg.jpg")';
+    };
 
-// let x = 5;
-// console.log(x++);
+    const sortArr = (arr) => {
+        arr.sort();
+    };
 
-console.log([] + false - null + true);
-console.log(0 || null || 2 || undefined || 1);
-alert(+"Infinity");
+    function createMovieList(films, parent) {
+        parent.innerHTML = "";
+        sortArr(films);
+    
+        films.forEach((film, i) => {
+            parent.innerHTML += `
+                <li class="promo__interactive-item">${i + 1} ${film}
+                    <div class="delete"></div>
+                </li>
+            `;
+        });
+
+        document.querySelectorAll('.delete').forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+
+                createMovieList(films, parent);
+            });
+        });
+    }
+
+    deleteAdv(adv);
+    makeChanges();
+    createMovieList(movieDB.movies, movieList);
+
+});
