@@ -132,33 +132,57 @@
 
 
 
+// const now = new Date(1602835054435);
+// console.log(now.getTime())
+// console.log(now)
+// console.log(now.getTimezoneOffset())
 
-//////////////////////////////////
+const deadline = '2020-10-20';
 
-// (function($) {
-//     $(document).ready(function() {
-//     var $img = $("#image").imgNotes();
-//     $img.one("load",function(){
-//     $img.imgNotes("import", [{x:"0.5", y:"0.5", note:"AFL Grand Final Trophy"},
-//     {x:"0.322", y:"0.269", note:"Brisbane Lions Flag"},
-//     {x:"0.824", y:"0.593", note:"Fluffy microphone"}]);
-//     });
-//     var $toggle = $("#toggleEdit");
-//     if ($img.imgNotes("option","canEdit")) {
-//     $toggle.text("View");
-//     }else {
-//     $toggle.text("Edit");
-//     }
-//     $toggle.on("click",function() {
-//     var $this = $(this);
-//     if ($this.text()=="Edit") {
-//     $this.text("View");
-//     $img.imgNotes("option","canEdit",true);
-//     }else {
-//     $this.text('Edit');
-//     $img.imgNotes('option','canEdit',false);
-//     }
-//     });
-//     });
-//     })(jQuery);
+function getTimeRemaining(endtime){
+    const t = Date.parse(endtime) - Date.parse(new Date());
+    const days = Math.floor( t / (1000 * 60 * 60 * 24));
+    const hours = Math.floor( t / (1000 * 60 * 60) % 24);
+    const minutes = Math.floor( t / 1000 / 60 % 60);
+    const seconds = Math.floor( (t / 1000) % 60);
+
+    return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+    };
+}
+function getZero(num) {
+    if( num >= 0 && num < 10){
+        return `0${num}`;
+    }else{
+        return num;
+    }
+}
+function setClock( selector, endtime){
+    const timer = document.querySelector(selector);
+    const days = timer.querySelector('#days');
+    const hours = timer.querySelector('#hours');
+    const minutes = timer.querySelector('#minutes');
+    const seconds = timer.querySelector('#seconds');
+    const interval = setInterval( updateClock, 1000);
+
+    updateClock();
+
+    function updateClock(){
+        const t = getTimeRemaining(endtime);
+        days.innerHTML = getZero(t.days);
+        hours.innerHTML = getZero(t.hours);
+        minutes.innerHTML = getZero(t.minutes);
+        seconds.innerHTML = getZero(t.seconds);
+        
+        if(t.total <= 0){
+            clearInterval(interval)
+        }
+    }
+}
+
+setClock('.timer', deadline );
 
