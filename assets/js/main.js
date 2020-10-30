@@ -93,102 +93,60 @@
 // // });
 
 
-// // function makeCyrcleByElements(itemSize = '6em'){
-// //     const container = document.querySelector('.circle-container'),
-// //           items = container.querySelectorAll('.circle-item');
 
-// //     let circleSize = (items.length * 64) + 'px',
-// //         itemCount = items.length,
-// //         angle = (360 / itemCount),
-// //         rot = 0;
-
-// //     container.style.cssText = `
-// //         position: relative;
-// //         width:  ${circleSize};
-// //         height: ${circleSize};
-// //         padding: 0;
-// //         border-radius: 50%; 
-// //         list-style: none;
-// //     `;
-// //     items.forEach(function(item, i){
-// //         item.style.cssText = `
-// //             display: block;
-// //             position: absolute;
-// //             top:  50%; 
-// //             left: 50%;
-// //             width:  ${itemSize};
-// //             height: ${itemSize};
-// //             margin: -(${itemSize} / 2);
-// //             transform: 
-// //             rotate(calc(${rot} * 1deg)) 
-// //             translate(calc(${circleSize} / 2)) 
-// //             rotate(calc(${rot} * -1deg));
-// //         `;
-// //         rot = rot + angle;
-// //     });
-// // };
-
-// // makeCyrcleByElements('100px');
-
-
-
-// // const now = new Date(1602835054435);
-// // console.log(now.getTime())
-// // console.log(now)
-// // console.log(now.getTimezoneOffset())
 
 
 // // Timer Make function 
 
 
-// // const deadline = '2020-10-30';
+const deadline = '2020-12-31';
 
-// // function getTimeRemaining(endtime){
-// //     const t = Date.parse(endtime) - Date.parse(new Date());
-// //     const days = Math.floor( t / (1000 * 60 * 60 * 24));
-// //     const hours = Math.floor( t / (1000 * 60 * 60) % 24);
-// //     const minutes = Math.floor( t / 1000 / 60 % 60);
-// //     const seconds = Math.floor( (t / 1000) % 60);
+function getTimeRemaining(endtime){
+    const t = Date.parse(endtime) - Date.parse(new Date());
+    const days = Math.floor( t / (1000 * 60 * 60 * 24));
+    const hours = Math.floor( t / (1000 * 60 * 60) % 24);
+    const minutes = Math.floor( t / 1000 / 60 % 60);
+    const seconds = Math.floor( (t / 1000) % 60);
 
-// //     return {
-// //         'total': t,
-// //         'days': days,
-// //         'hours': hours,
-// //         'minutes': minutes,
-// //         'seconds': seconds
-// //     };
-// // }
-// // function getZero(num) {
-// //     if( num >= 0 && num < 10){
-// //         return `0${num}`;
-// //     }else{
-// //         return num;
-// //     }
-// // }
-// // function setClock( selector, endtime){
-// //     const timer = document.querySelector(selector);
-// //     const days = timer.querySelector('#days');
-// //     const hours = timer.querySelector('#hours');
-// //     const minutes = timer.querySelector('#minutes');
-// //     const seconds = timer.querySelector('#seconds');
-// //     const interval = setInterval( updateClock, 1000);
+    return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+    };
+}
+function getZero(num) {
+    if( num >= 0 && num < 10){
+        return `0${num}`;
+    }else{
+        return num;
+    }
+}
+function setClock( selector, endtime){
+    const timer = document.querySelector(selector);
+    const days = timer.querySelector('#days');
+    const hours = timer.querySelector('#hours');
+    const minutes = timer.querySelector('#minutes');
+    const seconds = timer.querySelector('#seconds');
+    const interval = setInterval( updateClock, 1000);
 
-// //     updateClock();
+    updateClock();
 
-// //     function updateClock(){
-// //         const t = getTimeRemaining(endtime);
-// //         days.innerHTML = getZero(t.days);
-// //         hours.innerHTML = getZero(t.hours);
-// //         minutes.innerHTML = getZero(t.minutes);
-// //         seconds.innerHTML = getZero(t.seconds);
+    function updateClock(){
+        const t = getTimeRemaining(endtime);
+        days.innerHTML = getZero(t.days);
+        hours.innerHTML = getZero(t.hours);
+        minutes.innerHTML = getZero(t.minutes);
+        seconds.innerHTML = getZero(t.seconds);
         
-// //         if(t.total <= 0){
-// //             clearInterval(interval)
-// //         }
-// //     }
-// // }
+        if(t.total <= 0){
+            clearInterval(interval)
+        }
+    }
+}
 
-// // setClock('.timer', deadline );
+setClock('.timer', deadline );
 
 // /////////// place element in cyrcle
 
