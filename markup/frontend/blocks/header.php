@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>მზა</title>
+<title>JS Tutorial</title>
 <link rel="shortcut icon" href="<?php // echo base_url(); ?>themes/images/favicon.png">
 <!-- <meta name="theme-color" content="#000">
 <meta name="msapplication-navbutton-color" content="#000">
