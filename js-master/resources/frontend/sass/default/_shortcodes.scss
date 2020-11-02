@@ -1,0 +1,197 @@
+blockquote{
+	padding: 20px 20px 20px 70px;
+	color: $cmain;
+	font-style: italic;
+	background-color: $clight;
+	border-radius: $bdrm;
+	@media(max-width: 768px){
+		padding: 15px 15px 15px 50px;
+	}
+	&:before{
+		display: block;
+		position: absolute;
+		content: '"';
+		position: absolute;
+		left: 20px;
+		top: 20px;
+		font-size: 50px;
+		line-height: 1;
+		@media(max-width: 768px){
+			left: 15px;
+			top: 15px;
+			font-size: 36px;
+		}
+	}
+}
+a.download_inline{
+	display: inline-flex;
+	margin: 0 5px;
+	padding-bottom: 5px;
+	color: $cread;
+	transition: color 0.2s ease;
+	em{
+		margin-right: 5px;
+		&.fa-file-pdf{
+			color: $cpdf;
+		}
+		&.fa-file-word{
+			color: $cword;
+		}
+		&.fa-file-excel{
+			color: $cexcel;
+		}
+		&.fa-file-powerpoint{
+			color: $cpowerpoint;
+		}
+		&.fa-file-archive{
+			color: $carchive;
+		}
+	}
+	span{
+		line-height: 1;
+	}
+	&:hover{
+		color: $ccorp;
+	}
+}
+figure.inline_image{
+	z-index: 2;
+	&.left{
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 10px;
+		@media(max-width: 420px){
+			margin-right: 0;
+		}
+	}
+	&.right{
+		float: right;
+		margin-left: 20px;
+		margin-bottom: 10px;
+		@media(max-width: 420px){
+			margin-left: 0;
+		}
+	}
+	&.full{
+		width: 100%;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	&.medium{
+		width: 50%;
+		@media(max-width: 768px){
+			width: 40%;
+		}
+		@media(max-width: 420px){
+			width: 100%;
+		}
+	}
+	&.small{
+		width: 35%;
+		margin-right: 20px;
+		margin-bottom: 10px;
+		@media(max-width: 768px){
+			width: 30%;
+		}
+		@media(max-width: 420px){
+			width: 100%;
+			margin-right: 0;
+		}
+	}
+	a{
+		display: block;
+	}
+	img{
+		width: 100%;
+		border-radius: $bdrm;
+	}
+	figcaption{
+		margin: 5px 0 0 5px;
+		color: $cread;
+		font-weight: 700;
+	}
+}
+h2.inline_title{
+	margin: 10px 0;
+	padding-bottom: 5px;
+	font-size: 22px;
+	font-family: $ffmain;
+	text-transform: uppercase;
+	border-bottom: 1px solid $cline;
+	@media(max-width: 1366px){
+		font-size: 22px;
+	}
+	@media(max-width: 1280px){
+		font-size: 20px;
+	}
+	@media(max-width: 1024px){
+		font-size: 18px;
+	}
+	@media(max-width: 768px){
+		font-size: 18px;
+	}
+}
+h3.inline_title{
+	margin: 10px 0;
+	font-size: 16px;
+	@media(max-width: 1024px){
+		font-size: 14px;
+	}
+}
+table{
+	&.border_bot{
+		width: 100%;
+		tr{
+			th{
+				padding: 10px 5px;
+				border-bottom: 2px solid $cgray;
+			}
+			td{
+				padding: 10px 5px;
+				border-bottom: 1px solid $cline;
+			}
+			&:hover{
+				td{
+					background-color: $clight;
+				}
+			}
+		}
+	}
+	&.bordered{
+		width: 100%;
+		tr{
+			th{
+				padding: 10px;
+				border: 2px solid $cgray;
+			}
+			td{
+				padding: 10px;
+				border: 1px solid $cline;
+			}
+			&:hover{
+				td{
+					background-color: $clight;
+				}
+			}
+		}
+	}
+	&.double_color{
+		width: 100%;
+		tr{
+			th{
+				padding: 10px 5px;
+			}
+			td{
+				padding: 10px 5px;
+			}
+			&:nth-child(even){
+				background-color: $cline;
+			}
+			&:hover{
+				td{
+					background-color: darken($cline, 4);
+				}
+			}
+		}
+	}
+}

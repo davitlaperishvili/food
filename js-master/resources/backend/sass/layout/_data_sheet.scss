@@ -1,0 +1,56 @@
+div.datasheet{
+	h3.datasheet_title{
+		margin-bottom: 15px;
+		padding: 10px 0;
+		font-size: 20px;
+		font-family: $ffmain;
+		font-weight: 700;
+		text-align: center;
+	}
+	div.datasheet_item{
+		margin-bottom: 10px;
+		&.head_item{
+			h3{
+				margin-top: 30px;
+				margin-left: 0;
+				margin-bottom: 20px;
+				padding-bottom: 5px;
+				border-bottom: 1px solid #ececec;
+				text-align: center;
+			}
+		}
+		&.inline_item{
+			display: flex;
+			align-items: center;
+			h3{
+				margin-left: 0;
+				margin-right: 20px;
+				margin-bottom: 0;
+				font-size: 12px;
+				font-family: $ffbase;
+			}
+			h4{
+				flex-grow: 1;
+				font-weight: 400;
+			}
+		}
+		h3{
+			margin-left: 10px;
+			margin-bottom: 5px;
+			font-size: 16px;
+			font-family: $ffmain;
+			font-weight: 400;
+		}
+		h4{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 15px;
+			background-color: $clight;
+			border-radius: 5px;
+			svg{
+				width: 16px;
+			}
+		}
+	}
+}

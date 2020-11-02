@@ -1,0 +1,27 @@
+div.list{
+	div.list_item{
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid $cline;
+		h3.list_item_title{
+			margin-bottom: 3px;
+			color: $ccorp;
+			font-size: 16px;
+			font-family: $ffmain;
+			font-weight: 700;
+			text-transform: uppercase;
+			a{
+				display: block;
+				color: $ccorp;
+				&:hover{
+					color: $cbase;
+				}
+			}
+		}
+		time{
+			margin-bottom: 5px;
+			color: $cread;
+			font-size: 10px;
+		}
+	}
+}

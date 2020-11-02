@@ -1,0 +1,34 @@
+div.breadcrumbs{
+	margin: 20px 0;
+	ul{
+		@extend .no-list;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		font-size: 12px;
+		li{
+			display: flex;
+			align-items: center;
+			margin: 5px 10px 5px 0;
+			color: $cmain;
+			&:last-child{
+				margin-right: 0;
+				&:after{
+					display: none;
+				}
+			}
+			a{
+				margin-right: 10px;
+				color: $ccorp;
+				&:hover{
+					color: $cmain;
+				}
+			}
+			&:after{
+				display: block;
+				color: $cmain;
+				content: "/";
+			}
+		}
+	}
+}

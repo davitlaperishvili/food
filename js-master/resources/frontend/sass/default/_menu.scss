@@ -1,0 +1,231 @@
+// მთავარი მენიუ
+nav.navigation{
+	@media(max-width: 992px){
+		display: none;
+	}
+	> ul{
+		@extend .no-list;
+		display: flex;
+		> li{
+			margin-right: 25px;
+			padding: 10px 0;
+			&:last-child{
+				margin-right: 0;
+			}
+			> a{
+				@extend .trans-4;
+				color: $cbase;
+				font-size: 14px;
+				font-family: $ffmain;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			&.active,
+			&:hover{
+				> a{
+					color: $ccorp;
+				}
+			}
+			ul{
+				position: absolute;
+				width: 220px;
+				left: -10px;
+				top: 100%;
+				padding: 15px 20px;
+				transition-delay: 0.2s;
+				background-color: $clight;
+				border-radius: $bdrm;
+				visibility: hidden;
+				opacity: 0;
+				@media(max-width: 1200px){
+					padding: 15px 20px;
+				}
+				&.rtl{
+					left: auto;
+					right: -10px;
+				}
+				li{
+					position: relative;
+					padding: 0;
+					a{
+						@extend .trans-4;
+						display: block;
+						position: relative;
+						padding: 7px 0;
+						color: $cbase;
+						font-size: 12px;
+					}
+					&.active,
+					&:hover{
+						> a{
+							color: $ccorp;
+						}
+					}
+					ul{
+						left: 100%;
+						top: -15px;
+						&.rtl{
+							left: auto;
+							right: 100%;
+						}
+					}
+					&:hover{
+						ul{
+							visibility: visible;
+							opacity: 1;
+						}
+					}
+				}
+			}
+			&:hover{
+				> ul{
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+// მთავარი მენიუ
+// რესპონსივ მენიუ
+div.resp_menu{
+	display: none;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	top: 20px;
+	right: 15px;
+	z-index: 1000;
+	@media(max-width: 992px){
+		display: block;
+	}
+	div.resp_menu_toggle{
+		@extend .trans-all-4;
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		background-color: $ccorp;
+		border-radius: $bdrm;
+		cursor: pointer;
+		div{
+			position: absolute;
+			width: 15px;
+			height: 1px;
+			top: 50%;
+			right: 10px;
+			background-color: $cwhite;
+			&:first-child{
+				margin-top: -6px;
+			}
+			&:last-child{
+				margin-top: 6px;
+			}
+		}
+		&.resp_menu_toggled{
+			border-radius: $bdrm $bdrm $bdrn $bdrn;
+			div{
+				&:first-child,
+				&:last-child{
+					opacity: 0;
+				}
+				&:nth-child(2){
+					transform: rotate(45deg);
+				}
+				&:nth-child(3){
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+	div.resp_menu_ul{
+		display: none;
+		position: absolute;
+		width: 200px;
+		top: 35px;
+		right: 0;
+		padding: 10px 15px;
+		background-color: $ccorp;
+		border-radius: $bdrm $bdrn $bdrm $bdrm;
+		> ul{
+			@extend .no-list;
+			> li{
+				position: relative;
+				padding: 10px 5px;
+				border-bottom: 1px solid rgba($cwhite, 0.1);
+				&:last-child{
+					border-bottom: none;
+				}
+				> em{
+					display: none;
+				}
+				> a{
+					display: block;
+					color: $cwhite;
+				}
+				div.plus_minus{
+					@extend .trans-all-4;
+					position: absolute;
+					width: 30px;
+					height: 30px;
+					top: 5px;
+					right: 0;
+					background-color: $ccorp;
+					cursor: pointer;
+					div.plus,
+					div.minus{
+						position: absolute;
+						width: 11px;
+						height: 1px;
+						background-color: $cwhite;
+						left: 50%;
+						top: 15px;
+						transform: translateX(-50%);
+					}
+					div.minus{
+						transform: translateX(-50%) rotate(90deg);
+					}
+					&.plus_minus_toggled{
+						div.minus{
+							transform: translateX(-50%) rotate(0deg);
+						}
+					}
+				}
+				ul{
+					display: none;
+					padding: 10px 0 0 5px;
+					li{
+						position: relative;
+						padding-bottom: 5px;
+						&:before{
+							display: block;
+							position: absolute;
+							content: "";
+							left: 0;
+							top: 10px;
+							width: 5px;
+							height: 1px;
+							background-color: $cwhite;
+						}
+						a{
+							display: block;
+							margin-left: 15px;
+							color: $cwhite;
+						}
+						ul{
+							padding-left: 15px;
+						}
+						div.plus_minus{
+							height: 20px;
+							top: 0px;
+							div.plus,
+							div.minus{
+								top: 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// რესპონსივ მენიუ

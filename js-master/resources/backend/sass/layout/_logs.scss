@@ -1,0 +1,64 @@
+div.logs{
+	div.logs_title{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: 10px;
+		z-index: 3;
+		h3{
+			margin-right: 15px;
+			color: $ccorp;
+			font-size: 16px;
+			font-family: $ffmain;
+			font-weight: 700;
+		}
+		div.calendar{
+			a.fade_toggle{
+				color: $ccorp;
+				&:hover{
+					color: $cbase;
+				}
+			}
+			div#calendar-log-calendar{
+				display: none;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				width: 500px;
+				padding: 15px;
+				background-color: $cwhite;
+				border-radius: 5px;
+				box-shadow: 0 0 15px rgba($cblack, 0.2);
+				transition: none;
+				a{
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	div.logs_filter{
+		width: 50%;
+		margin-bottom: 50px;
+		@media(max-width: 768px){
+			width: auto;
+		}
+		div.form_item{
+			margin-bottom: 0;
+			@media(max-width: 600px){
+				margin-bottom: 15px;
+			}
+			&.found{
+				display: flex;
+				align-items: center;
+				span{
+					@extend .flex;
+					padding: 5px 11px;
+					margin: 0 10px;
+					color: $cwhite;
+					background-color: $cmain;
+					border-radius: 20px;
+				}
+			}
+		}
+	}
+}

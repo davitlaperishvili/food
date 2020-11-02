@@ -1,0 +1,18 @@
+div.admin_toolbar{
+	display: flex;
+	height: 35px;
+	background-color: $cbase;
+	a.admin_link{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		padding: 0 15px 0 10px;
+		color: $cwhite;
+		&:hover{
+			background-color: $cmain;
+		}
+		em{
+			margin-right: 10px;
+		}
+	}
+}

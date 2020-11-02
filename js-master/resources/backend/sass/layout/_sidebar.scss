@@ -1,0 +1,407 @@
+div.sidebar_toggle{
+	display: none;
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 20px;
+	top: 20px;
+	z-index: 5;
+	@media(max-width: 1200px){
+		display: block;
+	}
+	&.toggled{
+		@media(max-width: 1200px){
+			display: none;
+		}
+	}
+	a{
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-color: $ccorp;
+		border-radius: 5px;
+		span{
+			display: block;
+			position: absolute;
+			width: 25px;
+			height: 2px;
+			left: 12px;
+			background-color: $cwhite;
+			border-radius: 2px;
+			&:nth-of-type(1){
+				top: 15px;
+			}
+			&:nth-of-type(2){
+				top: 24px;
+			}
+			&:nth-of-type(3){
+				top: 33px;
+			}
+			&:nth-of-type(4),
+			&:nth-of-type(5){
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+		&.clicked{
+			span{
+				&:nth-of-type(1),
+				&:nth-of-type(2),
+				&:nth-of-type(3){
+					opacity: 0;
+				}
+				&:nth-of-type(4){
+					transform: rotate(45deg);
+				}
+				&:nth-of-type(5){
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+	&.light{
+		a{
+			background-color: $cwhite;
+			box-shadow: 0 10px 15px rgba($cblack, 0.05);
+			span{
+				background-color: $ccorp;
+			}
+			&.clicked{
+				box-shadow: none;
+			}
+		}
+	}
+}
+aside{
+	position: fixed !important;
+	width: 290px !important;
+	height: 100vh;
+	left: 0;
+	top: 0;
+	background-color: $ccorp;
+	transition: all 0.2s;
+	z-index: 2 !important;
+	@media(max-width: 1200px){
+		position: absolute !important;
+		width: 260px !important;
+		top: 0;
+		left: -260px;
+		z-index: 4 !important;
+	}
+	&.toggled{
+		left: 0;
+	}
+	div.simplebar-content{
+		display: flex;
+		flex-direction: column;
+		div.logo{
+			margin-top: 30px;
+			margin-bottom: 20px;
+			a{
+				display: block;
+				text-align: center;
+			}
+			svg{
+				width: 140px;
+				fill: none;
+				stroke-linecap: round;
+				g{
+					path{
+						stroke: $cwhite;
+						stroke-width: 1.7;
+					}
+				}
+			}
+		}
+		div.lang{
+			margin-bottom: 20px;
+			ul{
+				@extend .no-list;
+				display: flex;
+				justify-content: center;
+				li{
+					margin: 0 5px;
+					a{
+						@extend .flex;
+						width: 35px;
+						height: 35px;
+						color: rgba($cwhite, 0.6);
+						font-size: 11px;
+						text-transform: uppercase;
+						border-radius: 50%;
+						border: 1px dashed rgba($cwhite,  0);
+						&:hover{
+							color: rgba($cwhite, 0.9);
+						}
+					}
+					&.active{
+						a{
+							color: rgba($cwhite, 0.9);
+							border-color: rgba($cwhite,  0.4);
+						}
+					}
+				}
+			}
+		}
+		nav.tree_menu{
+			margin-bottom: 20px;
+			> ul{
+				@extend .no-list;
+				> li{
+					transition: all 0.2s;
+					> a{
+						display: flex;
+						padding: 12px 30px 12px 20px;
+						color: $cwhite;
+						font-size: 12px;
+						font-family: $ffbase;
+						transition: all 0.2s;
+						> svg{
+							width: 20px;
+							margin-right: 13px;
+							color: rgba($cwhite, 0.5);
+							transition: all 0.2s;
+						}
+						> span{
+							padding-top: 3px;
+							flex: 1;
+						}
+					}
+					ul{
+						@extend .no-list;
+						display: none;
+						margin-left: 55px;
+						li{
+							&:first-child{
+								padding-top: 5px;
+							}
+							&:last-child{
+								padding-bottom: 20px;
+							}
+							a{
+								display: block;
+								padding: 5px 0;
+								color: rgba($cwhite, 0.7);
+								transition: all 0.2s;
+								&:before{
+									display: block;
+									position: absolute;
+									content: "";
+									width: 5px;
+									height: 1px;
+									right: 100%;
+									top: 12px;
+									margin-right: 10px;
+									background-color: $cwhite;
+									transition: all 0.2s;
+									opacity: 0.5;
+								}
+							}
+							&.active,
+							&:hover{
+								> a{
+									color: rgba($cwhite, 1);
+									&:before{
+										width: 8px;
+										opacity: 1;
+									}
+								}
+							}
+							ul{
+								margin-left: 20px;
+							}
+						}
+					}
+					span.tree_indicator{
+						display: block;
+						position: absolute;
+						width: 15px;
+						height: 15px;
+						left: auto;
+						top: 25px;
+						right: 12px;
+						cursor: pointer;
+						opacity: 0.7;
+						&:before,
+						&:after{
+							display: block;
+							position: absolute;
+							content: "";
+							width: 6px;
+							height: 1px;
+							left: 0;
+							top: -2px;
+							background-color: $cwhite;
+							transition: all 0.2s;
+						}
+						&.tree_plus{
+							&:before{
+								left: -2px;
+								transform: rotate(45deg);
+							}
+							&:after{
+								left: 2px;
+								transform: rotate(-45deg);
+							}
+						}
+						&.tree_minus{
+							&:before{
+								left: -2px;
+								transform: rotate(-45deg);
+							}
+							&:after{
+								left: 2px;
+								transform: rotate(45deg);
+							}
+						}
+					}
+					&:hover{
+						background-color: rgba($cwhite, 0.05);
+						> a{
+							svg{
+								color: $cwhite;
+							}
+						}
+					}
+					&.active{
+						background-color: rgba($cwhite, 0.05);
+						> a{
+							svg{
+								color: $cwhite;
+							}
+						}
+						ul{
+							display: block;
+						}
+					}
+				}
+			}
+		}
+		div.artmedia{
+			margin-top: auto;
+			margin-bottom: 30px;
+			color: $cwhite;
+			font-size: 10px;
+			text-align: center;
+			span{
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translate(-17px,-10px);
+			}
+			a{
+				svg{
+					width: 108px;
+					height: 20px;
+					fill: none;
+					stroke: $cwhite;
+					stroke-width: 1.5;
+					transition: all 0.2s;
+				}
+				&:hover{
+					svg{
+						stroke: rgba($cwhite, 0.5);
+					}
+				}
+			}
+		}
+	}
+	&.light{
+		background-color: $cwhite;
+		box-shadow: 0 10px 25px rgba($cblack, 0.05);
+		div.simplebar-content{
+			div.logo{
+				margin-bottom: 30px;
+				svg{
+					g{
+						path{
+							stroke: $ccorp;
+						}
+					}
+				}
+			}
+			div.lang{
+				ul{
+					li{
+						a{
+							color: rgba($cbase, 0.6);
+							border: 1px dashed rgba($cbase,  0);
+							&:hover{
+								color: rgba($cbase, 0.9);
+							}
+						}
+						&.active{
+							a{
+								color: rgba($cbase, 0.9);
+								border-color: rgba($cbase,  0.4);
+							}
+						}
+					}
+				}
+			}
+			nav.tree_menu{
+				> ul{
+					> li{
+						> a{
+							color: $cbase;
+							svg{
+								color: $ccorp;
+							}
+						}
+						&:hover{
+							background-color: rgba($cbase, 0.05);
+							> a{
+								color: $ccorp;
+							}
+						}
+						ul{
+							li{
+								a{
+									color: rgba($cbase, 0.5);
+									&:before{
+										background-color: $cbase;
+									}
+								}
+								&.active,
+								&:hover{
+									a{
+										color: $cbase;
+									}
+								}
+							}
+						}
+						&.active{
+							background-color: rgba($cbase, 0.05);
+							> a{
+								color: $ccorp;
+							}
+							ul{
+								display: block;
+							}
+						}
+					}
+					span.tree_indicator{
+						&:before,
+						&:after{
+							background-color: $ccorp;
+						}
+					}
+				}
+			}
+			div.artmedia{
+				color: $cmain;
+				a{
+					svg{
+						stroke: $ccorp;
+					}
+					&:hover{
+						svg{
+							stroke: $cmain;
+						}
+					}
+				}
+			}
+		}
+	}
+}

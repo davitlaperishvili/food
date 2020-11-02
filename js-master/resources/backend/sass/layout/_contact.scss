@@ -1,0 +1,120 @@
+div.contact_tools{
+	display: flex;justify-content: space-between;
+	margin-bottom: 20px;
+	div.form_item{
+		width: 150px;
+		margin: 0;
+	}
+	ul{
+		@extend .no-list;
+		display: flex;
+		align-items: center;
+		li{
+			margin-left: 10px;
+			a{
+				@extend .flex;
+				width: 30px;
+				height: 30px;
+				color: $cbase;
+				background-color: $clight;
+				border-radius: 50%;
+				svg{
+					width: 17px;
+					height: 17px;
+				}
+				&:hover{
+					color: $cwhite;
+					background-color: $ccorp;
+				}
+			}
+		}
+	}
+}
+div.contact_addresses{
+	ul{
+		@extend .no-list;
+		li{
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 10px;
+			padding: 10px;
+			background-color: $clight;
+			border: 1px solid $cline;
+			border-radius: 5px;
+			transition: none;
+			&:last-child{
+				margin-bottom: 0;
+			}
+			&.ui-state-highlight{
+				height: 40px;
+				background-color: $cwhite;
+				border: 1px dashed $cread;
+				border-radius: 5px;
+			}
+			div.title{
+				display: flex;
+				svg{
+					width: 15px;
+					height: 15px;
+					margin-top: 2px;
+					margin-right: 10px;
+					cursor: pointer;
+				}
+				span{
+					flex: 1;
+					margin-top: 2px;
+					font-size: 11px;
+				}
+			}
+			div.actions{
+				display: grid;
+				grid-gap: 10px;
+				grid-template-columns: 15px 15px;
+				a{
+					&.edit{
+						color: $cwarning;
+					}
+					&.delete{
+						color: $cdanger;
+					}
+					&:hover{
+						color: $cbase;
+					}
+					svg{
+						width: 15px;
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+div.contact_recipient{
+	div.contact_tools{
+		justify-content: flex-end;
+	}
+	div.recipient_group{
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr 1fr 20px;
+		align-items: center;
+		margin-bottom: 10px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+		a{
+			@extend .flex;
+			height: 20px;
+			color: $cwhite;
+			background-color: $cdanger;
+			border-radius: 50%;
+			svg{
+				width: 15px;
+				height: 15px;
+			}
+			&:hover{
+				background-color: $cbase;
+			}
+		}
+	}
+}
