@@ -65,7 +65,7 @@
                     Наша основная идея - это правильное питание. Оно может быть простым и вкусным. Мы не просто доставка, мы сервис! Мы взяли на себя все расчеты БЖУ, калорийности, объемов порций и прочие важные, но скучные аспекты. Вам остается только полезная, сытная и правильная еда, которую мы привозим прямо под дверь.
                 </div>
             </div>
-            <div class="offer__action">
+            <div class="offer__action" data-modal>
                 <button class="btn btn_dark">Связаться с нами</button>
             </div>
         </div>
@@ -220,37 +220,7 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="social">
-                <div class="subtitle">Мы в социальных сетях:</div>
-                <a href="#" class="link">instagram</a>
-                <a href="#" class="link">facebook</a>
-            </div>
-            <div class="pepper">
-                <img src="icons/veg.svg" alt="pepper">
-            </div>
-            <div class="call">
-                <div class="subtitle">Или позвоните нам</div>
-                <a href="#" class="link">+380678341034</a>
-                <a href="#" class="link">+380500941356</a>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal">
-        <div class="modal__dialog">
-            <div class="modal__content">
-                <form action="#">
-                    <div class="modal__close">&times;</div>
-                    <div class="modal__title">Мы свяжемся с вами как можно быстрее!</div>
-                    <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
-                    <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal__input">
-                    <button class="btn btn_dark btn_min">Перезвонить мне</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 
 
 <?php include("blocks/footer.php"); ?>

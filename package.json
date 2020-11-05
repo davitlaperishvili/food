@@ -26,6 +26,7 @@
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-util": "^3.0.8",
+		"json-server": "^0.16.2",
 		"node-notifier": "^8.0.0",
 		"webpack": "^4.44.2"
 	},

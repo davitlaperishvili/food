@@ -9,7 +9,7 @@
 <meta name="msapplication-navbutton-color" content="#000">
 <meta name="apple-mobile-web-app-status-bar-style" content="#000"> -->
 <link rel="stylesheet" href="scripts/css/main.css">
-<script type="text/javascript" src="scripts/js/main.js"></script>
+
 </head>
 <body>
 
@@ -33,7 +33,7 @@
                 <a href="#" class="header__link">Второй пункт</a>
             </nav>
         </div>
-        <div class="header__right-block">
+        <div class="header__right-block" data-modal>
             <button class="btn btn_white">Связаться с нами</button>
         </div>
     </header>
