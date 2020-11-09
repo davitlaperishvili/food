@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function() {
     
     // Timer
 
-    const deadline = '2020-05-11';
+    const deadline = '2020-12-31';
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -446,4 +446,70 @@ window.addEventListener('DOMContentLoaded', function() {
             dots[slideIndex-1].style.opacity = 1;
         });
     });
+
+    // CALC
+
+    const result = document.querySelector('.calculating__result span');
+    let sex = 'female', height, weight, 
+        ratio = 1.375, age;
+
+    function totalCalc(){
+        if(!sex || !height || !weight || !ratio || !age){
+            result.textContent = "____";
+            return;
+        }
+
+        if( sex === 'female'){
+            result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio);
+        }else{
+            result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
+        }
+    }
+    totalCalc()
+
+    function getStaticInfo(parentSelector, activeClass){
+        const elements = document.querySelectorAll(`${parentSelector} div`);
+
+            elements.forEach( elem => {
+                elem.addEventListener('click', e => {
+                    if( e.target.getAttribute('data-ratio')){
+                        ratio = +e.target.getAttribute('data-ratio');
+                    } else {
+                        sex = e.target.getAttribute('id');
+                    }
+        
+                    elements.forEach( elem => {
+                        elem.classList.remove(activeClass);
+                    })
+        
+                    e.target.classList.add(activeClass);
+                    totalCalc()
+                });
+            })
+    }
+    getStaticInfo('#gender', 'calculating__choose-item_active');
+    getStaticInfo('.calculating__choose_big', 'calculating__choose-item_active');
+
+    function getDynamicInfo(selector){
+        const input = document.querySelector(selector);
+
+        input.addEventListener('input', function(){
+
+            switch(input.getAttribute('id')){
+                case 'height':
+                        height = +input.value;
+                        break;
+                case 'weight':
+                        weight = +input.value;
+                        break;
+                case 'age':
+                        age = +input.value;
+                        break;
+            }
+            totalCalc()
+        })
+    }
+    getDynamicInfo('#height');
+    getDynamicInfo('#weight');
+    getDynamicInfo('#age');
 });
