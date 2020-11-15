@@ -1,2 +1,2 @@
 # food
-# My repository for JS lessons 
+# My repository for my JS skills practice and development  
