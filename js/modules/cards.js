@@ -10,7 +10,7 @@ function cards() {
             this.classes = classes;
             this.parent = document.querySelector(parentSelector);
             this.transfer = 27;
-            this.changeToUAH(); 
+            //this.changeToUAH(); 
         }
 
         changeToUAH() {
@@ -33,17 +33,17 @@ function cards() {
                 <div class="menu__item-descr">${this.descr}</div>
                 <div class="menu__item-divider"></div>
                 <div class="menu__item-price">
-                    <div class="menu__item-cost">Цена:</div>
-                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+                    <div class="menu__item-cost">Price:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> $/day</div>
                 </div>
             `;
             this.parent.append(element);
         }
     }
 
-    getResource('http://localhost:3000/menu')
+    getResource('db.json')
         .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
+            data.menu.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
             });
         });
